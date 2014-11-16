@@ -1,0 +1,19 @@
+to start a project
+git init
+git add .
+
+while in the project
+git commit -a -m"version blannh"
+git checkout branchname - to switch a brach
+git merge master- to merge back to master. this must be done on the main branch
+git reset --HEAD~(how many versions back)
+
+for online repositories
+git pull-if repo has files already
+git remote add name (link to the repositories)
+git push 
+git remote -v 
+
+git clone
+
+reverting
