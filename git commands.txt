@@ -10,28 +10,38 @@ git + <command>
 		init = initialize
 		status = show working tree status
 		log = log of commits
+			log -- since last.month -- until 5.days.ago = show log of specified range
+			log <file name.extension> = show log of spcified file
 		branch = show existing branches
 		diff = shows difference of working directory and staging area	
 		remote -v = to see all remotes
 		remote show = shows remote branches
+		reflog = reset a reset (see commits that got lost in history)
 
 	FUNCTIONS
 		add = duh add (adds to staging area)
 		commit -am "<message>" = "save" or take snapshot (adds to tree)
-		checkout -b <name of branch> = creates new branch
+		branch <name branch> = creates new branch from head (not automatic switch)
 		checkout <name branch> = to go to branch
-		merge <branch name> = merges branch to master *merge in master dapat
+			checkout -b <name of branch> = creates new branch from head
+			checkout <commit> = creates an "anonymous branch" (disappears when you switch out) where you need to use checkout -b or branch to name it
+		merge <target branch name> = merges target to current branch
 		push <name of repo> <branch> = send data to somewhere from base (can only be done if same ung laman na files)
 		pull = get data from somewhere to base
 		
 		clone <URL> = copy from internet to local
 		remote add <name of repo> <URL(in lower right corner of net repo)> = make a pointer of internet repo locally
 		commit --amend = amend commit if you haven't pushed it yet
-		revert = issues a commit that reverts a commit previously done
+		revert <commit id> = issues a commit that reverts a commit
 		reset = deletes commit (only if not yet pushed)
-		reset --merge ORIG_HEAD = before merging
-		reset --hard HEAD~<number of commits before ng version na gusto mo balikan> = reset to certain version
+			reset --merge ORIG_HEAD = before merging
+			reset --hard HEAD~<number of commits before ng version na gusto mo balikan> = reset to certain version
+					= resets everything,  including current data
+			reset --soft = resets the current head, does not change anything else
+			reset --mixed = leaves current files untouched but changes the staging area
 		rm = removes files from the working tree and the index
+		prune = checks which commits are not reachable
+		fetch = fetch from specified repo
 
 STEPS 
 1. fork
@@ -41,3 +51,17 @@ STEPS
 4. commit
 5. push
 6. pull request (on net)
+
+terms
+Head - latest commit you are in
+working tree - files you currently have
+index - history
+head~# = (if merged, defaults to 1st branch)
+head@{#} = based on actual timeline not respect to tree (order you did in realtime)
+
+example
+	A(1) <- B(2) <- D(4) <----------------- G(7)
+		     <- C(3) <- E(5) <- F(6) <-
+
+G~1 refers to D also same as HEAD~1
+HEAD@{1} refers to F since 6th commit

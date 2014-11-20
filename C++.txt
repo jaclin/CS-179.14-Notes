@@ -1,0 +1,12 @@
+things to keep in mind for C++
+1. pointers
+
+2. type system
+	2 kinds of types
+		base - what compilers provide (has unsigned shit)
+			
+		class - treated as native types
+
+3. compilation
+
+4. 
